@@ -13,10 +13,12 @@
     "lint:fix": "standard --fix",
     "aws-login:dev": "$(aws --profile ovs ecr get-login --no-include-email --region eu-central-1)",
     "aws-login:live": "$(aws --profile ovs ecr get-login --no-include-email --region us-east-1)",
-    "build:dev": "docker build --build-arg AWS_STAGE dev --build-arg SQS_QUEUE_URL https://sqs.eu-central-1.amazonaws.com/920046484061/ovs-queue-dev -t ovs-data-importer-dev . && docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "build:live": "docker build --build-arg AWS_STAGE live --build-arg SQS_QUEUE_URL https://sqs.us-east-1.amazonaws.com/920046484061/ovs-queue-live -t ovs-data-importer-live . && docker tag ovs-data-importer-live:latest 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
-    "deploy:dev": "yarn aws-login:dev && yarn build:dev && docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "deploy:live": "yarn aws-login:live && yarn build:live && docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest"
+    "build:dev": "docker build --build-arg AWS_STAGE=dev --build-arg SQS_QUEUE_URL=https://sqs.eu-central-1.amazonaws.com/920046484061/ovs-queue-dev -t ovs-data-importer-dev .",
+    "build:live": "docker build --build-arg AWS_STAGE=live --build-arg SQS_QUEUE_URL=https://sqs.us-east-1.amazonaws.com/920046484061/ovs-queue-live -t ovs-data-importer-live .",
+    "tag:dev": "docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
+    "tag:live": "docker tag ovs-data-importer-live:latest 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
+    "deploy:dev": "yarn aws-login:dev && yarn build:dev && yarn tag:dev && docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
+    "deploy:live": "yarn aws-login:live && yarn build:live && yarn tag:live && docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest"
   },
   "husky": {
     "hooks": {
