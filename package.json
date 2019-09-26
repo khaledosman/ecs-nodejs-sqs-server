@@ -6,14 +6,14 @@
   "scripts": {
     "start": "npx nodemon --inspect server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "aws:login": "$(aws --profile ovs ecr get-login --no-include-email --region eu-central-1)",
-    "build": "docker build -t ovs-data-importer . && docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "ecr:push": "yarn aws:login && yarn build && docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
     "commit": "npx git-cz",
     "release": "npx semantic-release",
     "commitizen": "exec < /dev/tty && git cz",
     "lint": "standard",
-    "lint:fix": "standard --fix"
+    "lint:fix": "standard --fix",
+    "aws:login": "$(aws --profile ovs ecr get-login --no-include-email --region eu-central-1)",
+    "build": "docker build -t ovs-data-importer-dev . && docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
+    "ecr:push": "yarn aws:login && yarn build && docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest"
   },
   "husky": {
     "hooks": {
