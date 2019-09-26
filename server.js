@@ -10,10 +10,10 @@ AWS.config.update({
 const sqs = new AWS.SQS()
 
 const params = {
-  MessageBody: 'Information about current NY Times fiction bestseller for week of 12/11/2016.',
+  MessageBody: 'Hello From Data Importer',
   // MessageDeduplicationId: "TheWhistler",  // Required for FIFO queues
   // MessageId: "Group1",  // Required for FIFO queues
-  QueueUrl: process.env.SQS_QUEUE_URL
+  QueueUrl: process.env.AWS_STAGE === 'dev' ? process.env.SQS_QUEUE_URL_DEV : process.env.SQS_QUEUE_URL_LIVE
 }
 
 // Constants
