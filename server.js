@@ -13,7 +13,7 @@ const params = {
   MessageBody: 'Hello From Data Importer',
   // MessageDeduplicationId: "TheWhistler",  // Required for FIFO queues
   // MessageId: "Group1",  // Required for FIFO queues
-  QueueUrl: process.env.AWS_STAGE === 'dev' ? process.env.SQS_QUEUE_URL_DEV : process.env.SQS_QUEUE_URL_LIVE
+  QueueUrl: process.env.SQS_QUEUE_URL // process.env.AWS_STAGE === 'dev' ? process.env.SQS_QUEUE_URL_DEV : process.env.SQS_QUEUE_URL_LIVE
 }
 
 // Constants
