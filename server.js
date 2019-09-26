@@ -17,8 +17,7 @@ const params = {
 }
 
 // Constants
-const HOST = process.env.PORT || 'localhost'
-const PORT = process.env.HOST || 8080
+const PORT = process.env.PORT || 8080
 
 // App
 const app = express()
@@ -26,7 +25,7 @@ app.get('/', (req, res) => {
   res.send('Hello world\n')
 })
 
-app.listen(`${HOST}:${PORT}`, () => {
+app.listen(PORT, () => {
   console.log(`Running on http://${process.env.HOST}:${process.env.PORT}`)
   sqs.sendMessage(params)
     .promise()
