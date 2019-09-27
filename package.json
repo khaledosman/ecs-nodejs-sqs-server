@@ -18,7 +18,9 @@
     "tag:dev": "docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
     "tag:live": "docker tag ovs-data-importer-live:latest 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
     "deploy:dev": "yarn aws-login:dev && yarn build:dev && yarn tag:dev && docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "deploy:live": "yarn aws-login:live && yarn build:live && yarn tag:live && docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest"
+    "deploy:live": "yarn aws-login:live && yarn build:live && yarn tag:live && docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
+    "update-ecs:dev": "aws --profile ovs --region eu-central-1 ecs update-service --cluster ovs-cluster-dev --service ovs-dev-service --force-new-deployment",
+    "update-ecs:live": "aws --profile ovs --region us-east-1 ecs update-service --cluster ovs-cluster-live --service data-importer-service-live --force-new-deployment"
   },
   "husky": {
     "hooks": {
