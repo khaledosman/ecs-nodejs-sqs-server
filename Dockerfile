@@ -1,5 +1,8 @@
 FROM node:lts-alpine
 
+# install curl for health checking
+RUN apk --no-cache add curl
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -11,11 +14,6 @@ RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
-
-ARG AWS_STAGE=dev
-ARG SQS_QUEUE_URL=https://sqs.eu-central-1.amazonaws.com/920046484061/ovs-queue-dev 
-ENV AWS_STAGE=$AWS_STAGE 
-ENV SQS_QUEUE_URL=$SQS_QUEUE_URL
 
 EXPOSE 8080
 
