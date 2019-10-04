@@ -19,6 +19,7 @@
     "tag:live": "docker tag ovs-data-importer-live:latest 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
     "ecr-push:dev": "docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
     "ecr-push:live": "docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
+    "deploy": "yarn deploy:dev",
     "deploy:dev": "yarn aws-login:dev && yarn build:dev && yarn tag:dev && yarn ecr-push:dev && yarn update-ecs:dev",
     "deploy:live": "yarn aws-login:live && yarn build:live && yarn tag:live && yarn ecr-push:live && yarn update-ecs:live",
     "update-ecs:dev": "aws --profile ovs --region eu-central-1 ecs update-service --cluster ovs-cluster-dev --service ovs-dev-service --force-new-deployment",
