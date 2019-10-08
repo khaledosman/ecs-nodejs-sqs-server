@@ -1,5 +1,5 @@
 {
-  "name": "ovs-data-importer",
+  "name": "ecs-nodejs-sqs-server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -13,17 +13,17 @@
     "lint:fix": "standard --fix",
     "aws-login:dev": "$(aws --profile ovs ecr get-login --no-include-email --region eu-central-1)",
     "aws-login:live": "$(aws --profile ovs ecr get-login --no-include-email --region us-east-1)",
-    "build:dev": "docker build -t ovs-data-importer-dev .",
-    "build:live": "docker build -t ovs-data-importer-live .",
-    "tag:dev": "docker tag ovs-data-importer-dev:latest 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "tag:live": "docker tag ovs-data-importer-live:latest 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
-    "ecr-push:dev": "docker push 920046484061.dkr.ecr.eu-central-1.amazonaws.com/ovs-data-importer-dev:latest",
-    "ecr-push:live": "docker push 920046484061.dkr.ecr.us-east-1.amazonaws.com/ovs-data-importer-live:latest",
+    "build:dev": "docker build -t <dev-tag> .",
+    "build:live": "docker build -t <live-tag> .",
+    "tag:dev": "docker tag <dev-tag> <ecr-dev-repo>",
+    "tag:live": "docker tag <live-tag> <ecr-live-repo>",
+    "ecr-push:dev": "docker push <ecr-dev-repo>",
+    "ecr-push:live": "docker push <ecr-live-repo>",
     "deploy": "yarn deploy:dev",
     "deploy:dev": "yarn aws-login:dev && yarn build:dev && yarn tag:dev && yarn ecr-push:dev && yarn update-ecs:dev",
     "deploy:live": "yarn aws-login:live && yarn build:live && yarn tag:live && yarn ecr-push:live && yarn update-ecs:live",
-    "update-ecs:dev": "aws --profile ovs --region eu-central-1 ecs update-service --cluster ovs-cluster-dev --service ovs-dev-service --force-new-deployment",
-    "update-ecs:live": "aws --profile ovs --region us-east-1 ecs update-service --cluster ovs-cluster-live --service data-importer-service-live --force-new-deployment"
+    "update-ecs:dev": "aws --profile <aws-profile> --region eu-central-1 ecs update-service --cluster <dev-cluster> --service <dev-service> --force-new-deployment",
+    "update-ecs:live": "aws --profile <aws-profile> --region us-east-1 ecs update-service --cluster <live-cluster> --service <live-server> --force-new-deployment"
   },
   "husky": {
     "hooks": {
