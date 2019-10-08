@@ -33,12 +33,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/colorfy/ovs-data-importer.git"
+    "url": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/colorfy/ovs-data-importer#readme",
+  "homepage": "",
   "dependencies": {
     "aws-sdk": "^2.542.0",
     "dotenv": "^8.1.0",
