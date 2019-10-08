@@ -1,4 +1,4 @@
-# OVS Data Importer
+# ECS-NodeJS-server
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
@@ -7,7 +7,7 @@
 
 ## Setup
 
-- Setup your aws credentials and ovs profile using `aws configure --profile ovs`
+- Setup your aws credentials and aws profile using `aws configure --profile <aws profile>`
 - `npm install`
 - use `yarn start` to run in offline mode`
 - `yarn deploy:dev` to deploy dev environment
@@ -19,7 +19,7 @@ Environment variables can be setup in `.env` file
 
 ## Deploying
 
-- Install and setup your aws cli with an "ovs" profile using `aws config --profile=ovs`
+- Install and setup your aws cli with an aws profile using `aws config --profile=<aws profile>`
 - use `yarn deploy:dev` or `yarn deploy:live` to build and deploy Docker images to amazon ECR and force a new deployment and start a new service running on the ECS cluster with the new docker image. ECS will then take care of drowning the old service to match the configured desired number of running tasks.
 
 ## Releasing
