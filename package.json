@@ -53,7 +53,7 @@
     "@semantic-release/git": "^7.0.18",
     "@semantic-release/npm": "^5.2.0",
     "@semantic-release/release-notes-generator": "^7.3.0",
-    "cz-conventional-changelog": "^3.0.2",
+    "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.1",
     "nodemon": "^1.19.3",
     "semantic-release": "^15.14.0"
