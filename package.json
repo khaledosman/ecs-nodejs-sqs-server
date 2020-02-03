@@ -43,7 +43,7 @@
     "aws-sdk": "^2.542.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "pubnub": "^4.26.1"
+    "pubnub": "^4.27.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
